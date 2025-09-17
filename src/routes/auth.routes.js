@@ -1,13 +1,12 @@
 import { Router } from "express";
+import { login, register } from "../controllers/auth.controllers.js";
+import validate from "../middlewares/validate.middleware.js";
+import { createUserSchema, loginUserSchema } from "../schemas/user.schema.js";
 
 const authRouter = Router();
 
-authRouter.post("/login", (req, res) => {
-  res.status(200).json({ sucess: true, message: "Login" });
-});
+authRouter.post("/login", validate(loginUserSchema), login);
 
-authRouter.post("/register", (req, res) => {
-  res.status(200).json({ sucess: true, message: "Register" });
-});
+authRouter.post("/register", validate(createUserSchema), register);
 
 export default authRouter;

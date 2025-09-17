@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: mongodb
+    image: mongo:noble
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+
+volumes:
+  mongodata:
+    external: false
