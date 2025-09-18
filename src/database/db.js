@@ -5,7 +5,9 @@ import env from "../config/env.js";
 
 const connectToDb = async () => {
   try {
-    await mongoose.connect(env.DATABASE_URL);
+    await mongoose.connect(env.DATABASE_URL, {
+      dbName: env.DB_NAME,
+    });
     logger.info("Connected to database");
   } catch (err) {
     logger.error(`Error connecting database ${err}`);
