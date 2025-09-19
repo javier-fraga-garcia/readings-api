@@ -8,6 +8,7 @@ import loggerMiddleware from "./middlewares/logger.middleware.js";
 import errorMiddelware from "./middlewares/error.middleware.js";
 import authRouter from "./routes/auth.routes.js";
 import usersRouter from "./routes/users.routes.js";
+import readingsRouter from "./routes/readings.routes.js";
 import connectToDatabase from "./database/db.js";
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(loggerMiddleware);
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/readings", readingsRouter);
 
 app.get("/api/health", (req, res) => {
   return res.status(200).json({ success: true, message: "API is running" });
